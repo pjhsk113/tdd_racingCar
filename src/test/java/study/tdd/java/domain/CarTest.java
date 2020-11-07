@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import study.tdd.java.utils.MoveStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -21,18 +20,19 @@ class CarTest {
     @DisplayName("자동차 전진 테스트")
     @Test
     void 값이_4이상일때만_1칸_전진한다() {
-        MoveStrategy moveStrategy = new MoveStrategy();
-        car.move(moveStrategy);
-        assertThat(car.getPosition()).isOne();
+        MoveStrategy moveStrategy = new CarMoveStrategy();
+        if (moveStrategy.moveAble()) {
+            car.move(moveStrategy);
+            assertThat(car.getPosition()).isOne();
+        }
     }
 
     @DisplayName("자동차 전진 예외 테스트")
     @Test
     void 값이_4이하면_전진하지_않는다() {
-        // 랜덤 값을 반환하는 클래스로는 테스트가 어려워 전략패턴이 필요함
-//        MoveStrategy moveStrategy = new MoveStrategy();
-//        car.move(moveStrategy);
-//        assertThat(car.getPosition()).isZero();
+        MoveStrategy moveStrategy = new TestMoveStrategy();
+        car.move(moveStrategy);
+        assertThat(car.getPosition()).isZero();
     }
 
     @DisplayName("자동차 이름이 5글자를 넘어가는 예외 테스트")
@@ -43,6 +43,7 @@ class CarTest {
             Car.from(input);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
     @DisplayName("자동차 이름이 공백일 경우 예외 테스트")
     @ParameterizedTest
     @ValueSource(strings = {" ", "", "   "})
@@ -51,6 +52,7 @@ class CarTest {
             Car.from(input);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
     @DisplayName("자동차 이름이 Null일 경우 예외 테스트")
     @Test
     void name_Null_Exception_Test() {

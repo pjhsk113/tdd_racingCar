@@ -1,7 +1,5 @@
 package study.tdd.java.domain;
 
-import study.tdd.java.utils.MoveStrategy;
-
 /**
  * Car 객체에서는 각 자동차의 이동 전략과
  * 이름에 대한 책임을 가진다.
