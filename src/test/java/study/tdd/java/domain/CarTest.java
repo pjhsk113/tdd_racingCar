@@ -20,17 +20,17 @@ class CarTest {
     @DisplayName("자동차 전진 테스트")
     @Test
     void 값이_4이상일때만_1칸_전진한다() {
-        MoveStrategy moveStrategy = new CarMoveStrategy();
-        if (moveStrategy.moveAble()) {
-            car.move(moveStrategy);
-            assertThat(car.getPosition()).isOne();
-        }
+        TestMoveStrategy moveStrategy = new TestMoveStrategy();
+        moveStrategy.moveNumber(4);
+        car.move(moveStrategy);
+        assertThat(car.getPosition()).isOne();
     }
 
     @DisplayName("자동차 전진 예외 테스트")
     @Test
     void 값이_4이하면_전진하지_않는다() {
-        MoveStrategy moveStrategy = new TestMoveStrategy();
+        TestMoveStrategy moveStrategy = new TestMoveStrategy();
+        moveStrategy.moveNumber(3);
         car.move(moveStrategy);
         assertThat(car.getPosition()).isZero();
     }
