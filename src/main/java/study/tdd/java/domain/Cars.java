@@ -27,10 +27,6 @@ public class Cars {
     }
 
     public void moveCars(CarMoveStrategy carMoveStrategy) {
-//        for (Car car : cars) {
-//            car.move(carMoveStrategy);
-//        }
         cars.forEach(car -> car.move(carMoveStrategy));
-
     }
 }
