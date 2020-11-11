@@ -15,9 +15,9 @@ public class Result {
 
     public static void printResult(Cars cars) {
         cars.stream()
-                .forEach(car ->
-                        System.out.println(car.getName() + COLON
-                                + printHyphen(car.getPosition())));
+                .forEach(car -> System.out.println(
+                        car.getName() + COLON + printHyphen(car.getPosition())));
+        System.out.println();
     }
 
     private static String printHyphen(int position) {
