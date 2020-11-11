@@ -10,12 +10,14 @@ public class Input {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public String[] inputCarName() {
+    private Input() { }
+
+    public static String[] inputCarName() {
         System.out.println(INPUT_NAME_MESSAGE);
         return splitName(scanner.nextLine());
     }
 
-    public int inputRound() {
+    public static int inputRound() {
         System.out.println(INPUT_ROUND_MESSAGE);
         return scanner.nextInt();
     }
