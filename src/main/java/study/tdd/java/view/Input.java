@@ -6,7 +6,7 @@ import static study.tdd.java.utils.StringUtils.splitName;
 
 public class Input {
     private static final String INPUT_NAME_MESSAGE = "자동차 이름 입력";
-    private static final String INPUT_ROUND_MESSAGE = "게임 횟수";
+    private static final String INPUT_ROUND_MESSAGE = "게임 횟수 입력";
 
     private static final Scanner scanner = new Scanner(System.in);
 
