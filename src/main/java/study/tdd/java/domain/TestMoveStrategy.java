@@ -5,11 +5,7 @@ public class TestMoveStrategy implements MoveStrategy{
 
     @Override
     public boolean moveAble() {
-        boolean isBiggerThanFour = moveNumber(number);
-        if (isBiggerThanFour) {
-            return true;
-        }
-        return false;
+        return moveNumber(number);
     }
 
     public boolean moveNumber(int number) {
