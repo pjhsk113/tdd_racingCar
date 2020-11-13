@@ -13,6 +13,8 @@ public class Result {
     private static final String COMMA = ",";
     private static final String WINNER_NOTICE_MESSAGE = "가 최종 우승했습니다";
 
+    private Result () { }
+
     public static void printResult(Cars cars) {
         cars.stream()
                 .forEach(car -> System.out.println(
