@@ -1,6 +1,7 @@
 package study.tdd.java.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -12,19 +13,18 @@ public class Cars {
         createCars(names);
     }
 
+    public Stream<Car> stream() {
+        return cars.stream();
+    }
+
     public static Cars of(String[] names) {
         return new Cars(names);
     }
 
     private void createCars(String[] carNames) {
         cars = new ArrayList<>();
-        for (String name : carNames) {
-            cars.add(Car.from(name));
-        }
-    }
-
-    public Stream<Car> stream() {
-        return cars.stream();
+        Arrays.stream(carNames)
+                .forEach(name -> cars.add(Car.from(name)));
     }
 
     public void moveCars(CarMoveStrategy carMoveStrategy) {
