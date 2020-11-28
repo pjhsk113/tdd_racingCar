@@ -21,6 +21,4 @@ public class Input {
         System.out.println(INPUT_ROUND_MESSAGE);
         return scanner.nextInt();
     }
-
-
 }
